@@ -19,3 +19,4 @@ In general: Structuring code in a more intuitive order leads to less brein-tease
 			Not using one function with 100 arguments for literally everything
 			segmenting code into functions with descriptive names
 			
+To do: Implement threading, currently 26 seconds to calculate and 116 seconds reading from file..
