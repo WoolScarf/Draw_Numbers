@@ -6,12 +6,8 @@
 #include <utility>
 #include <fstream>
 #include <string>
-//#include "./factorTable2"
-//#include "./primes_1m_50k"
 #include <fileapi.h>
 #include <sstream>
-#include <chrono>
-#include <conio.h>
 
 
 // TODO: maybe see why the calc time got up so bad...
@@ -55,7 +51,7 @@ std::pair<int, int> getCoordsFromFile(std::fstream &myfile) {
 	
 	return std::make_pair(stoi(row[1]), std::stoi(row[2]));
 }
-void colorPixels(int number, int x, int y, int upperBound, char mode, int consoleHeight, int consoleWidth, HDC mydc) {
+void drawPixels(int number, int x, int y, int upperBound, char mode, int consoleHeight, int consoleWidth, HDC mydc) {
 	// When drawing, skip numbers, when writing, don't skip :)
 	if ((x > consoleWidth || y > consoleHeight) && mode != 'f') return;
 	COLORREF COLOR = RGB(255, 255, 255);
@@ -325,23 +321,21 @@ int main() {
 			for (; number <= fileLines; number++) {
 				coords = getCoordsFromFile(myfile);
 
-				colorPixels(number, coords.first, coords.second, upperBound, mode, consoleHeight, consoleWidth, mydc);
+				drawPixels(number, coords.first, coords.second, upperBound, mode, consoleHeight, consoleWidth, mydc);
 				if (GetKeyState(VK_ESCAPE) & 0x8000)
 					break;
 			}
 		}
-
+		
 		std::cout << '\r' << "Calculating numbers...";
 		for (; number <= upperBound; number++) {
 			coords = calcCoords(number);
-			colorPixels(number, coords.first, coords.second, upperBound, mode, consoleHeight, consoleWidth, mydc);
+			drawPixels(number, coords.first, coords.second, upperBound, mode, consoleHeight, consoleWidth, mydc);
 			if (GetKeyState(VK_ESCAPE) & 0x8000)
 				break;
 		}
 	}
 		
-
-	
 	std::cout << '\r' << "Done! Press Enter or Escape to exit.";
 	Sleep(400);
 	while (true) {
@@ -356,6 +350,3 @@ int main() {
 	ReleaseDC(consoleHWND, mydc);
 	return 0;
 }
-
-
-
