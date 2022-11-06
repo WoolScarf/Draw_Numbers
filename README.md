@@ -17,8 +17,10 @@ This program makes the assumption that the two factors of a number that produce 
 This is the result of the program being run, https://imgur.com/a/ZyP9B5S. 
 
 Picture #1: The graph in black and white
+
 Picture #2: The "sectors" divided by the following lines:
 		y = a * x where for each of the numbers 1, 1/1.25, 1/1.5, 1/2, 1/3, 1/4, 1/5
+		
 Picture #3: This table shows the value for floor(Y/X), amount of numbers counter in that group, and the % of the count out of 2.1m numbers. Lastly, it shows the geometric rate of change from one value to the next. 
 		
 
